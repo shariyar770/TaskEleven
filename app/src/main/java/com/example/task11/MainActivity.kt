@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var ScrollView = ScrollView(this)
+        var myScroll= ScrollView(this)
         val linearLayout : LinearLayout = LinearLayout(this)
         linearLayout.orientation=LinearLayout.VERTICAL
         setContentView(linearLayout)
@@ -43,21 +43,16 @@ class MainActivity : AppCompatActivity() {
         val buttonLP3=LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
         val buttonLP4=LinearLayout.LayoutParams(toInt(250), toInt(60))
         buttonLP1.gravity=Gravity.START
-        buttonLP1.weight=1F
-        buttonLP1.marginEnd=10
-        buttonLP1.marginStart=5
-        buttonLP1.topMargin=10
         buttonLP2.gravity=Gravity.CENTER_HORIZONTAL
-        buttonLP2.weight=1F
-        buttonLP2.marginEnd=10
-        buttonLP2.topMargin=10
-        buttonLP2.topMargin=10
         buttonLP3.gravity=Gravity.END
-        buttonLP3.weight=1F
-        buttonLP3.marginEnd=5
-        buttonLP3.topMargin=10
         buttonLP4.gravity=Gravity.CENTER
-        buttonLP4.topMargin=10
+        buttonLP1.weight=1F
+        buttonLP2.weight=1F
+        buttonLP3.weight=1F
+        buttonLP1.setMargins(10,10,10,10)
+        buttonLP2.setMargins(10,10,10,10)
+        buttonLP3.setMargins(10,10,10,10)
+        buttonLP4.setMargins(10,10,10,10)
 
         button1.layoutParams=buttonLP1
         button2.layoutParams=buttonLP2
@@ -81,12 +76,14 @@ class MainActivity : AppCompatActivity() {
                 else -> buttonLeft.setBackgroundResource(R.color.color6)
             }
             layout3.addView(buttonLeft)
+                myScroll.scrollBy(0, +1000);
 
         }
 
         button2.setOnClickListener{
             var buttonCenter=Button(this)
             buttonCenter.layoutParams=buttonLP2
+
             var a= Random.nextInt(5)
             when(a){
                 1-> buttonCenter.setBackgroundResource(R.color.color3)
@@ -95,11 +92,14 @@ class MainActivity : AppCompatActivity() {
                 else -> buttonCenter.setBackgroundResource(R.color.color6)
             }
             layout3.addView(buttonCenter)
+                myScroll.scrollBy(0, +1000);
+
         }
 
         button3.setOnClickListener{
             var buttonRights=Button(this)
             buttonRights.layoutParams=buttonLP3
+
             var a= Random.nextInt(5)
             when(a){
                 1-> buttonRights.setBackgroundResource(R.color.color3)
@@ -108,13 +108,15 @@ class MainActivity : AppCompatActivity() {
                 else -> buttonRights.setBackgroundResource(R.color.color6)
             }
             layout3.addView(buttonRights)
+                myScroll.scrollBy(0, +1000);
+
         }
 
         button4.setOnClickListener{
             layout3.removeAllViews()
         }
 
-        ScrollView.addView(layout3)
+        myScroll.addView(layout3)
 
         layout1.addView(button1)
         layout1.addView(button2)
@@ -122,7 +124,7 @@ class MainActivity : AppCompatActivity() {
         layout2.addView(button4)
         linearLayout.addView(layout1)
         linearLayout.addView(layout2)
-        linearLayout.addView(ScrollView)
+        linearLayout.addView(myScroll)
     }
 
     fun toInt(param: Int) : Int {
